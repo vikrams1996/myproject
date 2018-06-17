@@ -1,0 +1,87 @@
+﻿
+@model mallform.ViewModel.TenantFormViewModel
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+
+<h2><strong>Tenant Enquiry Form</strong></h2>
+
+</div>
+<br>
+<br>
+
+
+@using (Html.BeginForm("Form", "LeasingForm"))
+
+{
+
+    <div class="Enquiry">
+
+        <h4 style="text-decoration:underline"> Tenant Details</h4>
+        <br>
+       
+      
+        <label>
+            Shop Name
+        </label>
+        @Html.TextBoxFor(m => m.shopName, new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.shopName)
+        <br>
+
+
+        <label>
+            Brand Name
+        </label>
+        @Html.TextBoxFor(m => m.brandName, new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.brandName)
+        <br>
+
+        <label>
+            Address
+        </label>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.Address)
+        <br>
+
+        <label>
+            Mobile No
+        </label>
+        @Html.TextBoxFor(m => m.mobileNo, new { @class = "form-control ", placeholder = "eg 7838xxxxxx" })
+        @Html.ValidationMessageFor(m => m.mobileNo)
+        <br>
+
+        <label>
+            Pan No
+        </label>
+        @Html.TextBoxFor(m => m.panNo, new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.panNo)
+        <br>
+
+    </div>
+
+    <div class="unit">
+        <h4 style="text-decoration:underline"> Unit Details</h4>
+      <br>
+       
+
+        @Html.LabelFor(m => m.Size)
+        <br>
+        @Html.TextBoxFor(m => m.Size, new { @class = "form-control" })
+        <br>
+        @Html.LabelFor(m => m.Floor)
+        <br>
+        @Html.TextBoxFor(m => m.Floor, new { @class = "form-control" })
+        <br>
+        @Html.LabelFor(m => m.shopNo)
+        <br>
+        @Html.TextBoxFor(m => m.shopNo, new { @class = "form-control" })
+
+    </div>
+
+    <div class="button">
+        <button type="submit" class="btn btn-primary">Submit </button>
+    </div>
+}

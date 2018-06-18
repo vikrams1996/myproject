@@ -1,4 +1,5 @@
 ﻿using mallform.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace mallform.ViewModel
@@ -26,21 +27,31 @@ namespace mallform.ViewModel
 
         [StringLength(50)]
         [Required]
+        [RegularExpression(@"[A-Z]{5}\d{4}[A-Z]{1}", ErrorMessage ="Not a valid Pan Number")]
         public string panNo { get; set; }
 
-    
-        public Tenant Tenant { get; set; }
-
-
+        [Required]
         public string Size { get; set; }
 
+        [Required]
         public string Floor { get; set; }
 
+        [Required]
         public string shopNo { get; set; }
 
-        public Unit Unit { get; set; }
 
+        [Required]
+        public string startDate { get; set; }
 
+        [Required]
+        public string endDate { get; set; }
+
+        [Required]
+        public string Amount { get; set; }
+
+    
+
+        public Tenant Tenant { get; set; }
 
 
     }

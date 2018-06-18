@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using mallform.Models;
 using mallform.ViewModel;
+using System;
+using Microsoft.AspNet.Identity;
 
 namespace mallform.Controllers
 {
@@ -26,13 +28,20 @@ namespace mallform.Controllers
         [HttpPost]
         public ActionResult Form(TenantFormViewModel Form)
         {
+          
+
+
+
             if (!ModelState.IsValid)
             {
                 return View("Form", Form);
 
             }
-            
-                var tenant = new Tenant
+
+
+           
+
+            var tenant = new Tenant
             {
                     shopName = Form.shopName,
                     brandName = Form.brandName,
@@ -49,14 +58,28 @@ namespace mallform.Controllers
                 Size = Form.Size,
                 Floor = Form.Floor,
                 shopNo = Form.shopNo
+                
+
+            };
+
+           
+
+            var rent = new Rent
+            {
+                Amount = Form.Amount,
+                startDate = DateTime.Parse(string.Format("{0}", Form.startDate)),
+                endDate = DateTime.Parse(string.Format("{0}", Form.endDate)),
+                
+                
 
 
             };
 
-
-
             _context.Tenant.Add(tenant);
             _context.Unit.Add(unit);
+            _context.Rent.Add(rent);
+
+            
 
             _context.SaveChanges();
 

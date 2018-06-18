@@ -51,7 +51,12 @@ namespace mallform.ViewModel
 
     
 
-        public Tenant Tenant { get; set; }
+        public int TenantId { get; set; }
+        public IEnumerable<Tenant>Tenant { get; set; }
+
+        public int UnitId { get; set; }
+
+        public IEnumerable<Unit> Unit { get; set; }
 
 
     }

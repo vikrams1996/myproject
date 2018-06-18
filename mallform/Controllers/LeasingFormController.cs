@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using mallform.Models;
 using mallform.ViewModel;
 using System;
-using Microsoft.AspNet.Identity;
 
 namespace mallform.Controllers
 {
@@ -17,6 +16,8 @@ namespace mallform.Controllers
 
             _context = new ApplicationDbContext();
         }
+
+        [Authorize]
         public ActionResult Form()
         {
 
@@ -26,6 +27,7 @@ namespace mallform.Controllers
         }
         
         [HttpPost]
+        [Authorize]
         public ActionResult Form(TenantFormViewModel Form)
         {
           
@@ -38,9 +40,8 @@ namespace mallform.Controllers
 
             }
 
-
-           
-
+          
+          
             var tenant = new Tenant
             {
                     shopName = Form.shopName,
@@ -69,7 +70,6 @@ namespace mallform.Controllers
                 Amount = Form.Amount,
                 startDate = DateTime.Parse(string.Format("{0}", Form.startDate)),
                 endDate = DateTime.Parse(string.Format("{0}", Form.endDate)),
-                
                 
 
 
